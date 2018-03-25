@@ -1,2 +1,0 @@
-172.20.0.1 - - [25/Mar/2018:17:17:28 +0000] "POST /MoviesRating/GetRating HTTP/2.0" 200 470 "-" "grpc-java-netty/1.10.0"
-172.20.0.1 - - [25/Mar/2018:17:29:41 +0000] "POST /MoviesRating/GetRating HTTP/2.0" 200 470 "-" "grpc-java-netty/1.10.0"

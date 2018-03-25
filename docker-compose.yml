@@ -1,6 +1,8 @@
 version: '3'
 services:
   nginx:
+    depends_on:  
+      - movie    
     container_name: nginx-with-grpc
     image: nginx:1.13.10
     restart: always
@@ -11,12 +13,18 @@ services:
     - ./nginx/conf.d:/etc/nginx/conf.d     
     - ./nginx/logs:/etc/nginx/logs       
 
-  movie:
-    depends_on:  
-      - nginx  
+  movie:  
     container_name: movie
     build: ./movies
     hostname: movie
     restart: always   
     ports:
-      - 6565:6565        
+      - 6565:6565     
+
+  client:
+    container_name: client
+    build: ./client
+    hostname: client
+    restart: always   
+    ports:
+      - 81:81              
