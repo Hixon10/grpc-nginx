@@ -1,0 +1,4 @@
+client:
+  build: .
+  ports:
+    - "81:81"

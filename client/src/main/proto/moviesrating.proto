@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option java_package = "ru.hixon.movies";
+
+service MoviesRating {
+    rpc GetRating (GetRatingRequest) returns (GetRatingResponse) {}
+}
+
+message GetRatingRequest {
+}
+
+message GetRatingResponse {
+    repeated string movie = 1;
+}

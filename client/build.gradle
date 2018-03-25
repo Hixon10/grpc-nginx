@@ -1,0 +1,81 @@
+buildscript {
+	ext {
+		springBootVersion = '2.0.0.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.5'
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'com.google.protobuf'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'ru.hixon'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+	jcenter()
+	mavenCentral()
+}
+
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-actuator')
+	runtime('org.springframework.boot:spring-boot-devtools')
+	compile('org.springframework.boot:spring-boot-starter-webflux')
+	compile('org.lognet:grpc-spring-boot-starter:2.2.0')
+
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+	testCompile('io.projectreactor:reactor-test')
+}
+
+sourceSets {
+	main {
+		java {
+			srcDir 'src/main/protoGen'
+		}
+	}
+}
+
+protobuf {
+	protoc {
+		artifact = 'com.google.protobuf:protoc:3.5.1'
+	}
+	plugins {
+		grpc {
+			artifact = "io.grpc:protoc-gen-grpc-java:1.10.0"
+		}
+	}
+
+	generateProtoTasks {
+		ofSourceSet('main').each { task ->
+			task.builtins {
+				java{
+					outputSubDir = 'protoGen'
+				}
+			}
+			task.plugins {
+				grpc {
+					outputSubDir = 'protoGen'
+				}
+			}
+		}
+	}
+	generatedFilesBaseDir = "$projectDir/src/"
+}
+
+task cleanProtoGen{
+	doFirst{
+		delete("$projectDir/src/main/protoGen")
+	}
+}
+clean.dependsOn cleanProtoGen
