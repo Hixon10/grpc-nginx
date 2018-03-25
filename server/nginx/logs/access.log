@@ -1,8 +1,2 @@
-172.20.0.1 - - [25/Mar/2018:16:30:35 +0000] "POST /MoviesRating/GetRating HTTP/2.0" 502 174 "-" "grpc-java-netty/1.10.0"
-172.20.0.1 - - [25/Mar/2018:16:54:26 +0000] "POST /MoviesRating/GetRating HTTP/2.0" 502 174 "-" "grpc-java-netty/1.10.0"
-172.20.0.1 - - [25/Mar/2018:17:10:27 +0000] "POST /MoviesRating/GetRating HTTP/2.0" 502 174 "-" "grpc-java-netty/1.10.0"
-172.20.0.1 - - [25/Mar/2018:17:15:17 +0000] "POST /MoviesRating/GetRating HTTP/2.0" 502 174 "-" "grpc-java-netty/1.10.0"
-172.20.0.1 - - [25/Mar/2018:17:15:40 +0000] "POST /MoviesRating/GetRating HTTP/2.0" 200 470 "-" "grpc-java-netty/1.10.0"
-172.20.0.1 - - [25/Mar/2018:17:16:13 +0000] "POST /MoviesRating/GetRating HTTP/2.0" 200 470 "-" "grpc-java-netty/1.10.0"
 172.20.0.1 - - [25/Mar/2018:17:17:28 +0000] "POST /MoviesRating/GetRating HTTP/2.0" 200 470 "-" "grpc-java-netty/1.10.0"
 172.20.0.1 - - [25/Mar/2018:17:29:41 +0000] "POST /MoviesRating/GetRating HTTP/2.0" 200 470 "-" "grpc-java-netty/1.10.0"
