@@ -3,6 +3,8 @@ package ru.hixon.movieclient;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.util.concurrent.ListenableFuture;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,6 +25,8 @@ import java.util.stream.Collectors;
 @RequestMapping("/")
 public class MovieController {
 
+    private final static Logger log = LoggerFactory.getLogger(MovieController.class);
+
     private final MoviesRatingGrpc.MoviesRatingFutureStub moviesRatingStub;
 
     private final ExecutorService executor = Executors.newFixedThreadPool(10);
@@ -33,6 +37,8 @@ public class MovieController {
 
     @GetMapping("/top")
     Mono<List<Movie>> top() {
+        log.info("top()");
+
         ListenableFuture<Moviesrating.GetRatingResponse> ratingFuture
                 = moviesRatingStub.getRating(
                         Moviesrating.GetRatingRequest.newBuilder().build());

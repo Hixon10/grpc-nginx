@@ -11,7 +11,8 @@ public class GrpcConfiguration {
 
     @Bean
     public ManagedChannel managedChannel() {
-        return ManagedChannelBuilder.forAddress("nginx", 80)
+//        return ManagedChannelBuilder.forAddress("nginx", 80)
+        return ManagedChannelBuilder.forAddress("localhost", 6565)
                 .usePlaintext(true)
                 .build();
     }

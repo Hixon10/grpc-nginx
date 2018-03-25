@@ -2,6 +2,8 @@ package ru.hixon.movies;
 
 import io.grpc.stub.StreamObserver;
 import org.lognet.springboot.grpc.GRpcService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
 import java.util.List;
@@ -9,9 +11,13 @@ import java.util.List;
 @GRpcService
 public class MoviesRatingService extends MoviesRatingGrpc.MoviesRatingImplBase {
 
+    private final static Logger log = LoggerFactory.getLogger(MoviesRatingService.class);
+
     @Override
     public void getRating(Moviesrating.GetRatingRequest request,
                           StreamObserver<Moviesrating.GetRatingResponse> responseObserver) {
+        log.info("getRating(): request={}", request);
+
         List<String> bestMovies = Arrays.asList(
                 "The Shawshank Redemption",
                 "The Godfather",
