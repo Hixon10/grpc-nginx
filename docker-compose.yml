@@ -1,30 +1,36 @@
 version: '3'
 services:
   nginx:
-    depends_on:  
-      - movie    
+    depends_on:
+      - movie
     container_name: nginx-with-grpc
     image: nginx:1.13.10
     restart: always
     ports:
     - 80:80
-    - 443:443    
+    - 443:443
     volumes:
-    - ./nginx/conf.d:/etc/nginx/conf.d     
-    - ./nginx/logs:/etc/nginx/logs       
+    - ./nginx/conf.d:/etc/nginx/conf.d
+    - ./nginx/logs:/etc/nginx/logs
 
-  movie:  
+  movie:
     container_name: movie
     build: ./movies
     hostname: movie
-    restart: always   
+    restart: always
     ports:
-      - 6565:6565     
+      - 6565:6565
+    volumes:
+      - ./movies:/home/gradle/project
+    working_dir: /home/gradle/project
 
   client:
     container_name: client
     build: ./client
     hostname: client
-    restart: always   
+    restart: always
     ports:
-      - 81:81              
+      - 81:8080
+    volumes:
+      - ./client:/home/gradle/project
+    working_dir: /home/gradle/project
