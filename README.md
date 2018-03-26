@@ -13,5 +13,5 @@ git clone https://github.com/Hixon10/grpc-nginx.git ./grpc-nginx
 cd grpc-nginx
 docker-compose up -d
 
-curl http://localhost:81
+curl http://localhost:81/top
 ```
