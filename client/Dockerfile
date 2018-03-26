@@ -1,15 +1,5 @@
-FROM openjdk:8
+FROM gradle:4.5.1-jdk8
 
-RUN mkdir -p /client/
+CMD ["gradle", "bootRun"]
 
-COPY . /client
-
-WORKDIR /client
-
-RUN chmod 777 /client/gradlew
-
-RUN ./gradlew test build
-
-CMD ["./gradlew", "bootRun"]
-
-EXPOSE 81
+EXPOSE 8080

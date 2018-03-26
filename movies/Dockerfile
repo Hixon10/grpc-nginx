@@ -1,15 +1,5 @@
-FROM openjdk:8
+FROM gradle:4.5.1-jdk8
 
-RUN mkdir -p /movie/
-
-COPY . /movie
-
-WORKDIR /movie
-
-RUN chmod 777 /movie/gradlew
-
-RUN ./gradlew test build
-
-CMD ["./gradlew", "bootRun"]
+CMD ["gradle", "bootRun"]
 
 EXPOSE 6565
