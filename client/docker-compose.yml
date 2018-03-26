@@ -1,4 +1,4 @@
 client:
   build: .
   ports:
-    - "81:81"
+    - "81:8080"
